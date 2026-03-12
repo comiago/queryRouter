@@ -1,42 +1,44 @@
+- 
+
 # 🚀 QueryRouter
 
-**QueryRouter** è un tool locale leggero e modulare che trasforma la barra degli indirizzi del tuo browser in una centrale di comando. Grazie a un server locale in FastAPI, puoi definire scorciatoie di ricerca personalizzate (es. `yt:musica`, `gh:fastapi`) tramite un semplice file YAML, aggirando le restrizioni dei browser moderni.
+**QueryRouter** is a lightweight, modular local tool that transforms your browser's address bar into a powerful command center. Powered by a local FastAPI server, you can define custom search shortcuts (e.g., `yt:music`, `gh:fastapi`) through a simple YAML file, effortlessly bypassing the search engine restrictions of modern browsers.
 
 ---
 
-## ✨ Caratteristiche
+## ✨ Features
 
-- **⚡ Hot-Reload**: Modifica il file `config.yaml` e i cambiamenti sono applicati istantaneamente, senza bisogno di riavviare il server.
-- **🌐 Cross-Browser**: Funziona contemporaneamente su Brave, Chrome, Safari, Firefox e Edge.
-- **🛠️ Architettura Pulita**: Struttura modulare suddivisa in Parser, Router e Models per la massima estensibilità.
-- **🖥️ CLI Integrata**: Gestisci il tool con comandi semplici grazie all'interfaccia a riga di comando (es. `qr start`).
-- **🥷 Background Mode**: Supporto per l'esecuzione invisibile all'avvio su Windows (via script VBS) e macOS (tramite LaunchAgents nativi).
+- **⚡ Hot-Reload**: Edit the `config.yaml` file and changes are applied instantly—no server restart required.
+- **🌐 Cross-Browser**: Works seamlessly across Brave, Chrome, Safari, Firefox, and Edge.
+- **🛠️ Clean Architecture**: Modular structure divided into Parser, Router, and Models for maximum extensibility.
+- **🖥️ Integrated CLI**: Manage the tool with simple commands via the built-in command-line interface (e.g., `qr start`).
+- **🥷 Background Mode**: Support for invisible startup execution on Windows (via VBS script) and macOS (via native LaunchAgents).
 
 ---
 
-## 📂 Struttura del Progetto
+## 📂 Project Structure
 
 ```text
 .
-├── config.yaml          # Database delle tue scorciatoie
-├── pyproject.toml       # Configurazione del pacchetto Python
-├── queryRouter/         # Core del programma
-│   ├── config/          # Loader dinamico del file YAML
-│   ├── models/          # Schemi dati Pydantic
-│   ├── parser/          # Logica di estrazione query
-│   ├── router/          # Logica di reindirizzamento
-│   ├── cli.py           # Interfaccia a riga di comando
-│   └── server.py        # API FastAPI
-└── run_router.vbs       # Launcher invisibile (Solo Windows)
+├── config.yaml          # Your shortcut database
+├── pyproject.toml       # Python package configuration
+├── queryRouter/         # Application core
+│   ├── config/          # Dynamic YAML config loader
+│   ├── models/          # Pydantic data schemas
+│   ├── parser/          # Query extraction logic
+│   ├── router/          # Redirection logic
+│   ├── cli.py           # Command-line interface
+│   └── server.py        # FastAPI server
+└── run_router.vbs       # Invisible launcher (Windows only)
 ```
 
-## 🚀 Installazione
+## 🚀 Installation
 
-1. Assicurati di avere **Python 3.8+** installato sul tuo sistema.
+1. Ensure you have **Python 3.8+** installed on your system.
 
-2. Clona o scarica questa repository.
+2. Clone or download this repository.
 
-3. Apri il terminale nella cartella del progetto ed esegui l'installazione in modalità sviluppo:
+3. Open your terminal in the project directory and install it in editable mode:
 
    Bash
 
@@ -46,37 +48,37 @@
 
 ------
 
-## ⚙️ Configurazione (`config.yaml`)
+## ⚙️ Configuration (`config.yaml`)
 
-Personalizza le tue scorciatoie modificando il file `config.yaml` nella root del progetto. Usa `{query}` come segnaposto per il testo che inserirai dopo i due punti (es. scrivendo `yt:tutorial` il sistema inserirà `tutorial` al posto di `{query}`).
+Customize your shortcuts by editing the `config.yaml` file in the project root. Use `{query}` as a placeholder for the text you type after the colon (e.g., typing `yt:tutorial` will replace `{query}` with `tutorial`).
 
 YAML
 
 ```
-default_engine: "https://www.google.com/search?q="
+default_engine: "[https://www.google.com/search?q=](https://www.google.com/search?q=)"
 
 shortcuts:
   yt:
-    url: "https://www.youtube.com/"
-    search: "https://www.youtube.com/results?search_query={query}"
+    url: "[https://www.youtube.com/](https://www.youtube.com/)"
+    search: "[https://www.youtube.com/results?search_query=](https://www.youtube.com/results?search_query=){query}"
   gm:
-    url: "https://mail.google.com/"
-    search: "https://mail.google.com/mail/u/{query}/"
+    url: "[https://mail.google.com/](https://mail.google.com/)"
+    search: "[https://mail.google.com/mail/u/](https://mail.google.com/mail/u/){query}/"
   ig:
-    url: "https://www.instagram.com/"
-    search: "https://www.instagram.com/{query}"
+    url: "[https://www.instagram.com/](https://www.instagram.com/)"
+    search: "[https://www.instagram.com/](https://www.instagram.com/){query}"
   gh:
-    url: "https://github.com/"
-    search: "https://github.com/search?q={query}"
+    url: "[https://github.com/](https://github.com/)"
+    search: "[https://github.com/search?q=](https://github.com/search?q=){query}"
 ```
 
 ------
 
-## 💻 Utilizzo della CLI
+## 💻 CLI Usage
 
-Il tool è invocabile da qualsiasi punto del terminale tramite il comando `qr`.
+The tool can be invoked from anywhere in your terminal using the `qr` command.
 
-- **Avviare il server manualmente**:
+- **Start the server manually**:
 
   Bash
 
@@ -84,7 +86,7 @@ Il tool è invocabile da qualsiasi punto del terminale tramite il comando `qr`.
   qr start
   ```
 
-- **Installare come servizio di background (Solo macOS)**:
+- **Install as a background service (macOS only)**:
 
   Bash
 
@@ -92,7 +94,7 @@ Il tool è invocabile da qualsiasi punto del terminale tramite il comando `qr`.
   qr install
   ```
 
-- **Rimuovere il servizio di background (Solo macOS)**:
+- **Remove the background service (macOS only)**:
 
   Bash
 
@@ -102,35 +104,35 @@ Il tool è invocabile da qualsiasi punto del terminale tramite il comando `qr`.
 
 ------
 
-## 🌐 Configurazione del Browser
+## 🌐 Browser Configuration
 
-Per attivare QueryRouter, devi istruire il tuo browser a inviare le ricerche al server locale.
+To activate QueryRouter, you must instruct your browser to send searches to the local server.
 
 ### Brave / Chrome / Edge
 
-1. Vai nelle Impostazioni del browser e cerca **"Motori di ricerca"** o **"Ricerca nei siti"**.
-2. Aggiungi un nuovo motore di ricerca:
-   - **Nome**: `QueryRouter`
-   - **Scorciatoia**: `@q` (o impostalo come Predefinito)
-   - **URL**: `http://127.0.0.1:8080/search?q=%s`
+1. Go to your browser Settings and look for **"Search engine"** or **"Site search"**.
+2. Add a new search engine:
+   - **Search engine**: `QueryRouter`
+   - **Shortcut**: `@q` (or set it as Default)
+   - **URL with %s in place of query**: `http://127.0.0.1:8080/search?q=%s`
 
 ### Safari (macOS)
 
-Poiché Safari non permette l'aggiunta manuale di motori di ricerca, installa l'estensione gratuita **Keyword Search** e imposta l'URL di ricerca su: `http://127.0.0.1:8080/search?q={query}`
+Since Safari doesn't allow adding custom search engines natively, install the free **Keyword Search** extension and set the Search URL to: `http://127.0.0.1:8080/search?q={query}`
 
-### Esecuzione Automatica (Windows)
+### Automatic Startup (Windows)
 
-Per avviare il router all'accensione del PC senza finestre visibili:
+To start the router when you log in without keeping a terminal window open:
 
-1. Assicurati di aver creato il file `run_router.vbs` con il comando di avvio.
-2. Premi `Win + R`, digita `shell:startup` e invio.
-3. Trascina un collegamento del file `.vbs` in questa cartella.
+1. Ensure the `run_router.vbs` file is in your project folder.
+2. Press `Win + R`, type `shell:startup`, and press Enter.
+3. Drag a shortcut of the `.vbs` file into this folder.
 
 ------
 
-## 🛠️ Tecnologie Utilizzate
+## 🛠️ Built With
 
-- **[FastAPI](https://fastapi.tiangolo.com/)**: Per redirect HTTP ultra-veloci.
-- **[Typer](https://typer.tiangolo.com/)**: Per la gestione dei comandi CLI.
-- **[Pydantic](https://www.google.com/search?q=https://docs.pydantic.dev/)**: Per la validazione strutturata dei dati.
-- **PyYAML**: Per la lettura dinamica della configurazione.
+- **[FastAPI](https://fastapi.tiangolo.com/)**: For lightning-fast HTTP redirects.
+- **[Typer](https://typer.tiangolo.com/)**: For the modern CLI experience.
+- **[Pydantic](https://www.google.com/search?q=https://docs.pydantic.dev/)**: For robust data validation.
+- **PyYAML**: For dynamic configuration loading.

@@ -3,7 +3,7 @@ from pathlib import Path
 
 class ConfigLoader:
     def __init__(self, filename: str = "config.yaml"):
-        # Risale alla root del progetto
+        # Go up to the project root
         self.config_path = Path(__file__).parent.parent.parent / filename
 
     def load(self):

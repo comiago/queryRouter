@@ -9,20 +9,20 @@ app = typer.Typer(no_args_is_help=True)
 
 @app.command()
 def start(port: int = 8080, host: str = "127.0.0.1"):
-    """🚀 Avvia il server di redirect."""
+    """🚀 Start the redirect server."""
     typer.echo(f"Running on http://{host}:{port}")
     uvicorn.run("queryRouter.server:app", host=host, port=port, reload=True)
 
 @app.command()
 def install():
-    """🍎 Installa come servizio di background (macOS)."""
+    """🍎 Install as a background service (macOS)."""
     if os.name != 'posix':
-        typer.echo("❌ Questo comando è pensato per macOS.")
+        typer.echo("❌ This command is for macOS only.")
         return
 
     qr_path = shutil.which("qr")
     if not qr_path:
-        typer.echo("❌ Errore: Esegui prima 'pip install -e .'")
+        typer.echo("❌ Error: Run 'pip install -e .' first.")
         return
 
     plist_content = f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -48,16 +48,16 @@ def install():
         f.write(plist_content)
     
     os.system(f"launchctl load {plist_path}")
-    typer.echo("✅ Servizio installato e avviato!")
+    typer.echo("✅ Service installed and started!")
 
 @app.command()
 def uninstall():
-    """🗑 Rimuove il servizio di background (macOS)."""
+    """🗑 Remove the background service (macOS)."""
     plist_path = Path.home() / "Library/LaunchAgents/com.user.queryrouter.plist"
     if plist_path.exists():
         os.system(f"launchctl unload {plist_path}")
         os.remove(plist_path)
-        typer.echo("✅ Servizio rimosso.")
+        typer.echo("✅ Service removed.")
 
 if __name__ == "__main__":
     app()

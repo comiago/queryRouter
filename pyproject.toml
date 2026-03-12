@@ -1,7 +1,7 @@
 [project]
 name = "queryRouter"
 version = "0.1.0"
-description = "Router di ricerca locale professionale"
+description = "A professional local search query router"
 dependencies = [
     "fastapi",
     "uvicorn",

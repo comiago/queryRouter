@@ -12,10 +12,10 @@ class Router:
 
         if parsed.keyword in shortcuts:
             conf = shortcuts[parsed.keyword]
-            # Se l'utente ha scritto "gm:1" e abbiamo il template 'search'
+            # If the user typed "gm:1" and we have a 'search' template
             if parsed.payload and isinstance(conf, dict) and "search" in conf:
                 return conf["search"].replace("{query}", parsed.payload)
-            # Se ha scritto solo "gm" o non c'è il template search
+            # If they only typed "gm" or there is no search template
             if isinstance(conf, dict):
                 return conf.get("url", default + parsed.raw_query)
         
