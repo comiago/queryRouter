@@ -1,0 +1,1 @@
+from .query import ParsedQuery, Shortcut

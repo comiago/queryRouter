@@ -1,0 +1,9 @@
+# Cache di Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# File di pacchettizzazione
+*.egg-info/
+*.egg
