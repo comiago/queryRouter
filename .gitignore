@@ -1,9 +1,49 @@
-# Cache di Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
+# =========================
+# QueryRouter Specific
+# =========================
+router.log
+config.yaml
 
-# File di pacchettizzazione
-*.egg-info/
+# =========================
+# Python Cache & Bytecode
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# =========================
+# Build & Package Tools
+# =========================
 *.egg
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# =========================
+# Virtual Environments
+# =========================
+venv/
+env/
+.venv/
+.env
+
+# =========================
+# OS Generated Files
+# =========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =========================
+# IDEs & Editors
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo

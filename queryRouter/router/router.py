@@ -10,13 +10,23 @@ class Router:
         shortcuts = data.get("shortcuts", {})
         default = data.get("default_engine", "https://www.google.com/search?q=")
 
-        if parsed.keyword in shortcuts:
-            conf = shortcuts[parsed.keyword]
-            # If the user typed "gm:1" and we have a 'search' template
-            if parsed.payload and isinstance(conf, dict) and "search" in conf:
-                return conf["search"].replace("{query}", parsed.payload)
-            # If they only typed "gm" or there is no search template
-            if isinstance(conf, dict):
-                return conf.get("url", default + parsed.raw_query)
+        target_conf = None
         
+        # NEW LOGIC: Loop through keys and support comma-separated aliases
+        for key, conf in shortcuts.items():
+            # Split "qr, home, dash" into a list: ['qr', 'home', 'dash']
+            aliases = [k.strip().lower() for k in key.split(",")]
+            
+            if parsed.keyword.lower() in aliases:
+                target_conf = conf
+                break
+
+        # If we found a match, process the URL
+        if target_conf:
+            if parsed.payload and isinstance(target_conf, dict) and "search" in target_conf:
+                return target_conf["search"].replace("{query}", parsed.payload)
+            if isinstance(target_conf, dict):
+                return target_conf.get("url", f"{default}{parsed.raw_query}")
+        
+        # Fallback to Google (or your default engine)
         return f"{default}{parsed.raw_query}"

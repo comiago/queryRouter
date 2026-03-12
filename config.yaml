@@ -1,33 +1,36 @@
-default_engine: "https://www.google.com/search?q="
-
+default_engine: https://www.google.com/search?q=
 shortcuts:
   gm:
-    url: "https://mail.google.com/"
-    search: "https://mail.google.com/mail/u/{query}/"
+    url: https://mail.google.com/
+    search: https://mail.google.com/mail/u/{query}/
   gc:
-    url: "https://classroom.google.com/"
-    search: "https://classroom.google.com/u/{query}/h"
+    url: https://classroom.google.com/
+    search: https://classroom.google.com/u/{query}/h
   gd:
-    url: "https://drive.google.com/"
-    search: "https://drive.google.com/drive/u/{query}/my-drive"
+    url: https://drive.google.com/
+    search: https://drive.google.com/drive/u/{query}/my-drive
   ig:
-    url: "https://www.instagram.com/"
-    search: "https://www.instagram.com/{query}"
+    url: https://www.instagram.com/
+    search: https://www.instagram.com/{query}
   ol:
-    url: "https://outlook.office365.com/"
+    url: https://outlook.office365.com/
   sp:
-    url: "https://open.spotify.com/"
-    search: "http://googleusercontent.com/spotify.com/{query}"
+    url: https://open.spotify.com/
+    search: http://googleusercontent.com/spotify.com/{query}
   tg:
-    url: "https://web.telegram.org/"
+    url: https://web.telegram.org/
   tw:
-    url: "https://www.twitch.tv/"
-    search: "https://www.twitch.tv/{query}"
+    url: https://www.twitch.tv/
+    search: https://www.twitch.tv/{query}
   wa:
-    url: "https://web.whatsapp.com/"
+    url: https://web.whatsapp.com/
   yt:
-    url: "https://www.youtube.com/"
-    search: "https://www.youtube.com/results?search_query={query}"
+    url: https://www.youtube.com/
+    search: https://www.youtube.com/results?search_query={query}
   ytm:
-    url: "https://music.youtube.com/"
-    search: "https://music.youtube.com/search?q={query}"
+    url: https://music.youtube.com/
+    search: https://music.youtube.com/search?q={query}
+  qr, home, dash:
+    url: http://localhost:8080/
+  gh:
+    url: https://github.com

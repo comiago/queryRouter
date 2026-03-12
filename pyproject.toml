@@ -1,6 +1,6 @@
 [project]
-name = "queryRouter"
-version = "0.1.0"
+name = "query-router"
+version = "0.2.0"
 description = "A professional local search query router"
 dependencies = [
     "fastapi",
