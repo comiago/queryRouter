@@ -31,6 +31,6 @@ shortcuts:
     url: https://music.youtube.com/
     search: https://music.youtube.com/search?q={query}
   qr, home, dash:
-    url: http://localhost:8080/
+    url: http://localhost:9191/
   gh:
     url: https://github.com

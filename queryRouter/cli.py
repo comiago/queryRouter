@@ -8,7 +8,7 @@ from .server import app as fastapi_app
 app = typer.Typer(no_args_is_help=True)
 
 @app.command()
-def start(port: int = 8080, host: str = "127.0.0.1"):
+def start(port: int = 9191, host: str = "127.0.0.1"):
     """🚀 Start the redirect server."""
     typer.echo(f"Running on http://{host}:{port}")
     uvicorn.run("queryRouter.server:app", host=host, port=port, reload=True)
