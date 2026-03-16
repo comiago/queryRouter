@@ -288,6 +288,44 @@ run_router.vbs
 
 QueryRouter will now run silently in the background.
 
+### Linux
+On all modern systems, launch
+
+```
+sudo nano /etc/systemd/system/queryrouter.service
+```
+
+Paste
+
+```bash
+[Unit]
+Description=Query Router Service
+After=network.target
+
+[Service]
+User=<your_username>
+WorkingDirectory=/path/to/queryRouter
+ExecStart=/path/to/queryRouterVenv/bin/qr start
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+```
+Save and exit. Then run
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable queryrouter.service
+```
+
+If you want your background QueryRouter to start right away without rebooting, just launch
+```bash
+sudo systemctl enable queryrouter.service
+```
+
+
+
 ---
 
 # 🛠 Built With
