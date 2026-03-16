@@ -288,6 +288,8 @@ run_router.vbs
 
 QueryRouter will now run silently in the background.
 
+---
+
 ### 🐧 Linux (systemd)
 
 On modern Linux distributions you can run QueryRouter as a **systemd service** so it starts automatically at boot.
