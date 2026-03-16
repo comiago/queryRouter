@@ -1,8 +1,0 @@
-default_engine: "https://www.google.com/search?q="
-shortcuts:
-  yt:
-    url: "https://www.youtube.com"
-    search: "https://www.youtube.com/results?search_query={query}"
-  gh:
-    url: "https://github.com"
-    search: "https://github.com/search?q={query}"
