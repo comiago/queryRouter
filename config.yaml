@@ -2,8 +2,6 @@ port: 9191
 separator: ":"
 default_engine: https://www.google.com/search?q=
 shortcuts:
-  qr, home, dash:
-      url: http://localhost:{port}/
   gm:
     url: https://mail.google.com/
     search: https://mail.google.com/mail/u/{query}/
