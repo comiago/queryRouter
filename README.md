@@ -1,7 +1,6 @@
 # 🚀 QueryRouter
 
 [![Python](https://img.shields.io/badge/python-3.10+-blue)](https://www.python.org/)
-[![License](https://img.shields.io/github/license/comiago/queryRouter)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/comiago/queryRouter)](https://github.com/comiago/queryRouter/stargazers)
 [![Issues](https://img.shields.io/github/issues/comiago/queryRouter)](https://github.com/comiago/queryRouter/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/comiago/queryRouter)](https://github.com/comiago/queryRouter)
